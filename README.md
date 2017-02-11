@@ -1,6 +1,6 @@
 # generator-idyll
 
-Yeoman generator for Idyll projects
+Yeoman generator for [Idyll](https://github.com/idyll-lang/idyll) projects
 
 ## Installation
 
