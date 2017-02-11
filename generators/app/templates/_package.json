@@ -1,0 +1,12 @@
+{
+  "name": "<%= name %>",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "idyll index.idl --css styles.css"
+  },
+  "dependencies": {
+    "idyll": "^1.0.0"
+  },
+  "devDependencies": {
+  }
+}
