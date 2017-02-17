@@ -1,6 +1,27 @@
 
-This is an Idyll file. Write text 
-as you please in here.
+# Welcome to Idyll
 
-To add interactivity, you can add 
-different components to the text.
+This is an Idyll file. Write text 
+as you please in here. To add interactivity, 
+you can add  different components to the text.
+
+Here is how you can use a variable:
+
+[var name:"exampleVar" value:5 /]
+
+[Range min:0 max:10 value:exampleVar /]
+[DisplayVar var:exampleVar /]
+
+```
+var code = true;
+```
+
+And here is a custom component:
+
+[CustomComponent /]
+
+You can use standard html tags if a
+component with the same name 
+doesn't exist.
+
+[img src:"images/idyll.png" /]

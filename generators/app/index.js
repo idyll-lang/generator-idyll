@@ -35,6 +35,22 @@ module.exports = Generator.extend({
       this.templatePath('styles.css'),
       this.destinationPath(this.props.name + '/' + 'styles.css')
     );
+    this.fs.copy(
+      this.templatePath('components/'),
+      this.destinationPath(this.props.name + '/components')
+    );
+    this.fs.copy(
+      this.templatePath('data/'),
+      this.destinationPath(this.props.name + '/data')
+    );
+    this.fs.copy(
+      this.templatePath('images/'),
+      this.destinationPath(this.props.name + '/images')
+    );
+    this.fs.copy(
+      this.templatePath('build/'),
+      this.destinationPath(this.props.name + '/build')
+    );
   },
 
   install: function () {
