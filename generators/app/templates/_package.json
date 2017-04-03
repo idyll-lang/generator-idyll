@@ -2,8 +2,8 @@
   "name": "<%= name %>",
   "version": "1.0.0",
   "scripts": {
-    "start": "idyll index.idl --css styles.css",
-    "build": "cp -r {images,styles.css} build/; idyll index.idl --build | uglifyjs > build/index.js",
+    "start": "idyll index.idl --css styles.css --layout blog --spellcheck",
+    "build": "cp _index.html build/index.html; cp -r {.idyll/styles.css,images} build/; idyll index.idl --layout blog --css styles.css --build | uglifyjs > build/index.js",
     "deploy": "npm run build && gh-pages -d ./build"
   },
   "dependencies": {
