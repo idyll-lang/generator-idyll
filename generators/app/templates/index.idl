@@ -1,8 +1,16 @@
+[meta title:"Page Title" description:"Short description of your project" /]
 
-# Welcome to Idyll
+[IdyllLogo /]
 
-This is an Idyll file. Write text 
-as you please in here. To add interactivity, 
+[Header
+  title:"Welcome to Idyll"
+  subtitle:"Open index.idl to start writing"
+  author:"Your Name Here"
+  authorLink:"https://idyll-lang.github.io" /]
+
+
+This is an Idyll file. Write text
+as you please in here. To add interactivity,
 you can add  different components to the text.
 
 Here is how you can use a variable:
@@ -21,7 +29,6 @@ And here is a custom component:
 [CustomComponent /]
 
 You can use standard html tags if a
-component with the same name 
+component with the same name
 doesn't exist.
 
-[img src:"images/idyll.png" /]

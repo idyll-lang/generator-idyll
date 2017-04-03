@@ -48,10 +48,6 @@ module.exports = Generator.extend({
       this.templatePath('data/'),
       this.destinationPath(this.props.name + '/data')
     );
-    this.fs.copy(
-      this.templatePath('images/'),
-      this.destinationPath(this.props.name + '/images')
-    );
     mkdirp.sync(this.destinationPath(this.props.name + '/build'));
     mkdirp.sync(this.destinationPath(this.props.name + '/images'));
     mkdirp.sync(this.destinationPath(this.props.name + '/fonts'));
