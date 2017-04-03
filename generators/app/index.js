@@ -32,8 +32,8 @@ module.exports = Generator.extend({
       this.destinationPath(this.props.name + '/' + 'index.idl')
     );
     this.fs.copy(
-      this.templatePath('_index.html'),
-      this.destinationPath(this.props.name + '/' + '_index.html')
+      this.templatePath('index.html'),
+      this.destinationPath(this.props.name + '/' + 'index.html')
     );
     this.fs.copy(
       this.templatePath('styles.css'),
