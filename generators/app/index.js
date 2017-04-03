@@ -3,6 +3,7 @@ var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
+var mkdirp = require('mkdirp');
 
 module.exports = Generator.extend({
   prompting: function () {
@@ -51,10 +52,7 @@ module.exports = Generator.extend({
       this.templatePath('images/'),
       this.destinationPath(this.props.name + '/images')
     );
-    this.fs.copy(
-      this.templatePath('build/'),
-      this.destinationPath(this.props.name + '/build')
-    );
+    mkdirp.sync(this.destinationPath(this.props.name + '/build'));
   },
 
   install: function () {
