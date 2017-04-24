@@ -1,7 +1,5 @@
 [meta title:"Page Title" description:"Short description of your project" /]
 
-[IdyllLogo /]
-
 [Header
   title:"Welcome to Idyll"
   subtitle:"Open index.idl to start writing"
