@@ -48,6 +48,7 @@ module.exports = Generator.extend({
       this.templatePath('data/'),
       this.destinationPath(this.props.name + '/data')
     );
+    mkdirp.sync(this.destinationPath(this.props.name + '/components/default'));
     mkdirp.sync(this.destinationPath(this.props.name + '/build'));
     mkdirp.sync(this.destinationPath(this.props.name + '/images'));
     mkdirp.sync(this.destinationPath(this.props.name + '/fonts'));
@@ -58,6 +59,10 @@ module.exports = Generator.extend({
     process.chdir(elementDir);
     var self = this;
     this.npmInstall(undefined, undefined, function() {
+      self.fs.copy(
+        self.destinationPath(self.props.name + '/node_modules/idyll-default-components/components/'),
+        self.destinationPath(self.props.name + '/components/default')
+      );
       self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
     });
 
