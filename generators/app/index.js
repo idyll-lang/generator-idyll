@@ -4,6 +4,10 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
 var mkdirp = require('mkdirp');
+const updateNotifier = require('update-notifier');
+const pkg = require('../../package.json');
+
+updateNotifier({pkg}).notify();
 
 module.exports = Generator.extend({
   prompting: function () {
@@ -26,19 +30,19 @@ module.exports = Generator.extend({
   },
 
   writing: function () {
-    this.fs.copyTpl(this.templatePath('_package.json'),  this.destinationPath(this.props.name + '/' + 'package.json'), this.props);
+    this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath(this.props.name + '/package.json'), this.props);
 
     this.fs.copy(
       this.templatePath('index.idl'),
-      this.destinationPath(this.props.name + '/' + 'index.idl')
+      this.destinationPath(this.props.name + '/index.idl')
     );
     this.fs.copy(
       this.templatePath('_index.html'),
-      this.destinationPath(this.props.name + '/' + '_index.html')
+      this.destinationPath(this.props.name + '/_index.html')
     );
     this.fs.copy(
       this.templatePath('styles.css'),
-      this.destinationPath(this.props.name + '/' + 'styles.css')
+      this.destinationPath(this.props.name + '/styles.css')
     );
     this.fs.copy(
       this.templatePath('components/'),
@@ -48,6 +52,7 @@ module.exports = Generator.extend({
       this.templatePath('data/'),
       this.destinationPath(this.props.name + '/data')
     );
+    mkdirp.sync(this.destinationPath(this.props.name + '/components/default'));
     mkdirp.sync(this.destinationPath(this.props.name + '/build'));
     mkdirp.sync(this.destinationPath(this.props.name + '/images'));
     mkdirp.sync(this.destinationPath(this.props.name + '/fonts'));
@@ -57,10 +62,20 @@ module.exports = Generator.extend({
     var elementDir = path.join(process.cwd(), this.props.name);
     process.chdir(elementDir);
     var self = this;
-    this.npmInstall(undefined, undefined, function() {
-      self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
+    this.npmInstall(undefined, undefined, function (err) {
+      if (err) {
+        self.log(err);
+        return;
+      }
+      try {
+        self.fs.copy(
+          self.destinationPath(self.props.name + '/node_modules/idyll-default-components/components/'),
+          self.destinationPath(self.props.name + '/components/default')
+        );
+        self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
+      } catch (e) {
+        self.log(e);
+      }
     });
-
-
   }
 });

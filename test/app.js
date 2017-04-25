@@ -12,9 +12,9 @@ describe('generator-idyll:app', function () {
 
   it('creates files', function () {
     assert.file([
-      '__tmp/index.idl',
-      '__tmp/styles.css',
-      '__tmp/package.json'
+      'index.idl',
+      'styles.css',
+      'package.json'
     ]);
   });
 });
