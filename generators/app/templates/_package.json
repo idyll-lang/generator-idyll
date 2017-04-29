@@ -11,7 +11,6 @@
     "idyll-default-components": "^1.0.0"
   },
   "devDependencies": {
-    "uglify-js": "^2.7.5",
     "gh-pages": "^0.12.0"
   }
 }
