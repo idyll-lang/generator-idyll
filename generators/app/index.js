@@ -10,7 +10,8 @@ const stringLength = require('string-length');
 
 module.exports = Generator.extend({
   prompting: function () {
-    var message, notifier;
+    var message;
+    var notifier;
     notifier = updateNotifier({
       pkg: pkg,
       updateCheckInterval: 1
@@ -20,7 +21,7 @@ module.exports = Generator.extend({
       message.push('Update available: ' + chalk.green.bold(notifier.update.latest) + chalk.gray(' (current: ' + notifier.update.current + ')'));
       message.push('Run ' + chalk.magenta('npm install -g yo ' + pkg.name) + ' to update.');
       message.push('\n' + chalk.white.bold('Recommend updating ') + chalk.green.bold(pkg.name) + chalk.white.bold(' before continuing.'));
-      this.log(yosay(message.join(' '), { maxLength: stringLength(message[0]) }));
+      this.log(yosay(message.join(' '), {maxLength: stringLength(message[0])}));
     } else {
       this.log(yosay(
         'Welcome to the ' + chalk.red('generator-idyll') + ' generator!'
