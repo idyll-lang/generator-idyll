@@ -6,15 +6,28 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 const updateNotifier = require('update-notifier');
 const pkg = require('../../package.json');
-
-updateNotifier({pkg}).notify();
+const stringLength = require('string-length');
 
 module.exports = Generator.extend({
   prompting: function () {
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the ' + chalk.red('generator-idyll') + ' generator!'
-    ));
+    var message, notifier;
+    notifier = updateNotifier({
+      pkg: pkg,
+      updateCheckInterval: 1
+    });
+    message = [];
+    if (notifier.update) {
+      message.push('Update available: ' + chalk.green.bold(notifier.update.latest) + chalk.gray(' (current: ' + notifier.update.current + ')'));
+      message.push('Run ' + chalk.magenta('npm install -g yo ' + pkg.name) + ' to update.');
+      message.push('\n' + chalk.white.bold('Recommend updating ') + chalk.green.bold(pkg.name) + chalk.white.bold(' before continuing.'));
+      this.log(yosay(message.join(' '), { maxLength: stringLength(message[0]) }));
+    } else {
+      this.log(yosay(
+        'Welcome to the ' + chalk.red('generator-idyll') + ' generator!'
+      ));
+    }
+
+    updateNotifier({pkg}).notify();
 
     var prompts = [{
       type: 'text',
