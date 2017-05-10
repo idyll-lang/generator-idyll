@@ -1,6 +1,6 @@
 {
   "name": "generator-idyll",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Yeoman generator for Idyll projects",
   "homepage": "https://github.com/idyll-lang/generator-idyll",
   "author": {
