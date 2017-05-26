@@ -47,9 +47,10 @@ module.exports = Generator.extend({
   writing: function () {
     this.fs.copyTpl(this.templatePath('_package.json'), this.destinationPath(this.props.name + '/package.json'), this.props);
 
-    this.fs.copy(
-      this.templatePath('index.idl'),
-      this.destinationPath(this.props.name + '/index.idl')
+    this.fs.copyTpl(
+      this.templatePath('_index.idl'),
+      this.destinationPath(this.props.name + '/index.idl'),
+      this.props
     );
     this.fs.copy(
       this.templatePath('_index.html'),
