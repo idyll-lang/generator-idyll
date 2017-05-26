@@ -78,7 +78,8 @@ module.exports = Generator.extend({
     process.chdir(elementDir);
     var self = this;
     const hasYarn = commandExists('yarn');
-    this.installDependencies({yarn: hasYarn, npm: !hasYarn, bower: false}, undefined, function (err) {
+
+    this.installDependencies({yarn: hasYarn, npm: !hasYarn, bower: false, callback: function (err) {
       if (err) {
         self.log(err);
         return;
@@ -92,6 +93,6 @@ module.exports = Generator.extend({
       } catch (e) {
         self.log(e);
       }
-    });
+    }});
   }
 });
