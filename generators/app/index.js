@@ -7,6 +7,7 @@ var mkdirp = require('mkdirp');
 const updateNotifier = require('update-notifier');
 const pkg = require('../../package.json');
 const stringLength = require('string-length');
+const commandExists = require('command-exists').sync;
 
 module.exports = Generator.extend({
   prompting: function () {
@@ -76,7 +77,8 @@ module.exports = Generator.extend({
     var elementDir = path.join(process.cwd(), this.props.name);
     process.chdir(elementDir);
     var self = this;
-    this.npmInstall(undefined, undefined, function (err) {
+    const hasYarn = commandExists('yarn');
+    this.installDependencies({yarn: hasYarn, npm: !hasYarn, bower: false}, undefined, function (err) {
       if (err) {
         self.log(err);
         return;
