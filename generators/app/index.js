@@ -53,10 +53,6 @@ module.exports = Generator.extend({
       this.props
     );
     this.fs.copy(
-      this.templatePath('_index.html'),
-      this.destinationPath(this.props.name + '/_index.html')
-    );
-    this.fs.copy(
       this.templatePath('styles.css'),
       this.destinationPath(this.props.name + '/styles.css')
     );
@@ -68,7 +64,6 @@ module.exports = Generator.extend({
       this.templatePath('data/'),
       this.destinationPath(this.props.name + '/data')
     );
-    mkdirp.sync(this.destinationPath(this.props.name + '/components/default'));
     mkdirp.sync(this.destinationPath(this.props.name + '/build'));
     mkdirp.sync(this.destinationPath(this.props.name + '/images'));
     mkdirp.sync(this.destinationPath(this.props.name + '/fonts'));
@@ -85,15 +80,7 @@ module.exports = Generator.extend({
         self.log(err);
         return;
       }
-      try {
-        self.fs.copy(
-          self.destinationPath(self.props.name + '/node_modules/idyll-default-components/components/'),
-          self.destinationPath(self.props.name + '/components/default')
-        );
-        self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
-      } catch (e) {
-        self.log(e);
-      }
+      self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
     }});
   }
 });
