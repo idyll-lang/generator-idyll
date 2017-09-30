@@ -1,7 +1,7 @@
-[meta title:"<%= name %>" description:"Short description of your project" /]
+[meta title:"<%= name.split('-').join(' ').replace(/\b\w/g, l => l.toUpperCase()) %>" description:"Short description of your project" /]
 
 [Header
-  title:"<%= name %>"
+  title:"<%= name.split('-').join(' ').replace(/\b\w/g, l => l.toUpperCase()) %>"
   subtitle:"Welcome to Idyll. Open index.idl to start writing"
   author:"Your Name Here"
   authorLink:"https://idyll-lang.github.io" /]
