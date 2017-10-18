@@ -80,7 +80,15 @@ module.exports = Generator.extend({
         self.log(err);
         return;
       }
-      self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
+      try {
+        self.fs.copy(
+          self.destinationPath(self.props.name + '/node_modules/idyll-components/src/'),
+          self.destinationPath(self.props.name + '/components/default')
+        );
+        self.log('Your new project was created. To get started run `cd ' + self.props.name + ' && npm start`');
+      } catch (e) {
+        self.log(e);
+      }
     }});
   }
 });
