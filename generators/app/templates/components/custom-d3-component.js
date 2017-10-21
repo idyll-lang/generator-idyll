@@ -10,7 +10,7 @@ class CustomD3Component extends D3Component {
     const svg = this.svg = d3.select(node).append('svg');
     svg.attr('viewBox', `0 0 ${size} ${size}`)
       .style('width', '100%')
-      .style('height', '100vh');
+      .style('height', 'auto');
 
     svg.append('circle')
       .attr('r', 20)
