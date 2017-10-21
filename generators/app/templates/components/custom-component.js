@@ -4,7 +4,7 @@ class CustomComponent extends React.Component {
   render() {
     const { hasError, updateProps, ...props } = this.props;
     return (
-      <div {...this.props}>
+      <div {...props}>
         This is a custom component
       </div>
     );
