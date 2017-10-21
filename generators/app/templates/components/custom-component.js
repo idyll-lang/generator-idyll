@@ -1,7 +1,10 @@
 const React = require('react');
+const Scroll = require('react-scroll');
+const scroller = Scroll.scroller;
 
-class CustomComponent extends React.Component {
+class ScrollComponent extends React.Component {
   render() {
+    const { hasError, updateProps, ...props } = this.props;
     return (
       <div {...this.props}>
         This is a custom component
@@ -10,4 +13,4 @@ class CustomComponent extends React.Component {
   }
 }
 
-module.exports = CustomComponent;
+module.exports = ScrollComponent;
