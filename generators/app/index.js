@@ -65,8 +65,7 @@ module.exports = Generator.extend({
       this.destinationPath(this.props.name + '/data')
     );
     mkdirp.sync(this.destinationPath(this.props.name + '/build'));
-    mkdirp.sync(this.destinationPath(this.props.name + '/images'));
-    mkdirp.sync(this.destinationPath(this.props.name + '/fonts'));
+    mkdirp.sync(this.destinationPath(this.props.name + '/static'));
   },
 
   install: function () {
